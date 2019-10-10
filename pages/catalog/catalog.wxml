@@ -1,0 +1,23 @@
+<!--pages/catalog/catalog.wxml-->
+<view>
+  <block wx:for='{{countryContent}}' wx:key='country' wx:for-index="index">
+    <view class="mulit-selection">
+      <view class='zongContainer-text'>{{item.country}}</view>
+      <image src='{{selectIndex[index].sureid? hasSelect: noSelect}}' class='mulit-selection-image' data-selectIndex='{{index}}' bindtap='selectCountry'></image>     
+    </view>
+    <view wx:if="{{index != countryContent.length-1}}" class='divLine'></view>
+  </block>
+
+
+
+  <block wx:for='{{countryRates}}' wx:key='countryRates' wx:for-index="index">
+    <view class="mulit-selection">
+      <view class='zongContainer-text'>{{item.name}}({{item.code}}){{item.name_zh}}:{{item.rate}},{{item.selected}}</view>
+      <image src='{{item.selected? hasSelect: noSelect}}' class='mulit-selection-image' data-selectIndex='{{index}}' bindtap='selectCountry'></image>     
+    </view>
+    <view wx:if="{{index != countryContent.length-1}}" class='divLine'></view>
+  </block>
+
+
+
+</view>

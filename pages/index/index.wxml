@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<view class="container" wx:if="{{show}}">
+  <view class="userinfo">
+
+    <view class="content">
+      <view>小程序申请获取以下权限</view>
+      <text>您的公开信息，昵称，头像等</text>
+    </view>
+
+    <button class="bottom" type="primary" open-type="getUserInfo" bindgetuserinfo='getUserInfo' wx:if="{{!hasUserInfo && canIUse}}">
+      授权登录
+    </button>
+
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>
+
+<view wx:elif='{{show==false}}'>
+  <view class='zongHeader'>
+    <text>当前币种</text>
+    <view>
+      <picker bindchange='changeCountry' value='{{countryIndex}}' range='{{countryList}}'>
+        <text>币种更换</text>
+      </picker>
+    </view>
+
+
+  </view>
+
+  <view class='picker-detail'>
+    <view class='picker-detail-content'>{{countryList[countryIndex]}}</view>
+  </view>
+
+  <view class='zongContainer'>
+    <text>常用币种</text>
+    <text bindtap='toast'>币种选择</text>
+  </view>
+
+
+</view>
